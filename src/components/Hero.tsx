@@ -21,14 +21,6 @@ export const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left: Text Content */}
           <div className="flex-1 space-y-6 md:space-y-8">
-            <motion.p
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="text-sm md:text-base font-mono text-titanium tracking-[0.3em] uppercase"
-            >
-              Programming · Cloud · AI · Automation
-            </motion.p>
 
             <motion.h1
               initial={{ opacity: 0, y: 60 }}
