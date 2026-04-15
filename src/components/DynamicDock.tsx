@@ -12,7 +12,7 @@ const dockItems = [
 ];
 
 export const DynamicDock = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const handleClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
@@ -24,12 +24,10 @@ export const DynamicDock = () => {
 
   return (
     <motion.nav
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="fixed top-6 left-0 right-0 z-50 flex justify-center"
     >
       <motion.div
         layout
@@ -41,7 +39,9 @@ export const DynamicDock = () => {
             key={item.label}
             href={item.href}
             onClick={(e) => handleClick(e, item.href)}
-            initial={{ opacity: 0, y: 10 }}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 + index * 0.08, duration: 0.4 }}
             className="group relative flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-primary/10 transition-colors duration-300"
@@ -52,12 +52,11 @@ export const DynamicDock = () => {
             <motion.span
               initial={false}
               animate={{
-                width: isHovered ? 'auto' : 0,
-                opacity: isHovered ? 1 : 0,
+                width: hoveredIndex === index ? 'auto' : 0,
+                opacity: hoveredIndex === index ? 1 : 0,
               }}
               transition={{
                 duration: 0.4,
-                delay: isHovered ? index * 0.05 : 0,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="overflow-hidden whitespace-nowrap text-xs font-mono text-muted-foreground group-hover:text-foreground transition-colors duration-300"
