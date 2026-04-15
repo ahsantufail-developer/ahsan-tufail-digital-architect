@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Home, Code, Brain, Cloud, Mail } from 'lucide-react';
+import { Home, Code, Briefcase, Brain, Cloud, Mail } from 'lucide-react';
 
 interface DockItemProps {
   icon: React.ReactNode;
@@ -55,6 +55,7 @@ const DockItem = ({ icon, label, href, mouseX, index }: DockItemProps) => {
 const dockItems = [
   { icon: <Home className="w-5 h-5" />, label: 'Home', href: '#hero' },
   { icon: <Code className="w-5 h-5" />, label: 'Skills', href: '#skills' },
+  { icon: <Briefcase className="w-5 h-5" />, label: 'Projects', href: '#projects' },
   { icon: <Brain className="w-5 h-5" />, label: 'AI Terminal', href: '#terminal' },
   { icon: <Cloud className="w-5 h-5" />, label: 'Infrastructure', href: '#cloud' },
   { icon: <Mail className="w-5 h-5" />, label: 'Contact', href: '#contact' },

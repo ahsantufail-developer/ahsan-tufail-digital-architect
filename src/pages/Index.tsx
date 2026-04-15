@@ -1,5 +1,6 @@
 import { Hero } from '@/components/Hero';
 import { SkillsGrid } from '@/components/SkillsGrid';
+import { Projects } from '@/components/Projects';
 import { AITerminal } from '@/components/AITerminal';
 import { CloudVisualizer } from '@/components/CloudVisualizer';
 import { DynamicDock } from '@/components/DynamicDock';
@@ -17,6 +18,10 @@ const Index = () => {
       
       <section id="skills">
         <SkillsGrid />
+      </section>
+      
+      <section id="projects">
+        <Projects />
       </section>
       
       <section id="terminal">
