@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { getLogWindow } from '@/lib/logUtils';
 import {
   ReactFlow,
   Node,
@@ -133,11 +134,11 @@ const AILLMCard = () => {
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
 
   // Log overlay
-  const [logs, setLogs] = useState(logPool.slice(0, 3));
+  const [logs, setLogs] = useState(() => getLogWindow(logPool, 0));
   useEffect(() => {
-    let idx = 3;
+    let idx = 1;
     const id = setInterval(() => {
-      setLogs([logPool[idx % logPool.length], logPool[(idx + 1) % logPool.length], logPool[(idx + 2) % logPool.length]]);
+      setLogs(getLogWindow(logPool, idx));
       idx++;
     }, 1200);
     return () => clearInterval(id);

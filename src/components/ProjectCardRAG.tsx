@@ -8,6 +8,9 @@ interface TerminalLine {
 const techPills = ['Supabase (pgvector)', 'OpenAI Embeddings', 'n8n', 'Claude API', 'PostgreSQL'];
 const metricBadges = ['16,410 vectors', 'Sub-150ms queries', 'Cosine Similarity'];
 
+const SEQUENCE_PAUSE_DURATION = 3000;
+const TYPING_SPEED_MS = 40;
+
 // Typewriter sequence definition
 const buildSequence = (): Array<{ lines: TerminalLine[]; delay: number }> => [
   {
@@ -59,7 +62,7 @@ const ProjectCardRAG = () => {
     const runStep = (stepIdx: number) => {
       if (stepIdx >= seq.length) {
         // Pause then restart
-        const t = setTimeout(() => runSequence(), 3000);
+        const t = setTimeout(() => runSequence(), SEQUENCE_PAUSE_DURATION);
         timeoutsRef.current.push(t);
         return;
       }
@@ -75,7 +78,7 @@ const ProjectCardRAG = () => {
             charIdx++;
             setTypingText(combined.slice(0, charIdx));
             if (charIdx < combined.length) {
-              const tt = setTimeout(typeChar, 40);
+              const tt = setTimeout(typeChar, TYPING_SPEED_MS);
               timeoutsRef.current.push(tt);
             } else {
               // Finished typing — move group to displayed

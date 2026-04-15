@@ -138,13 +138,16 @@ const initialEdges: Edge[] = [
 
 // ── Status bar ────────────────────────────────────────────────────────────────
 
+const MIN_WORKFLOWS = 3;
+const MAX_WORKFLOWS = 7;
+
 const StatusBar = () => {
   const [workflows, setWorkflows] = useState(5);
   const [uptime, setUptime] = useState(99.8);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setWorkflows(Math.floor(Math.random() * (7 - 3 + 1)) + 3);
+      setWorkflows(Math.floor(Math.random() * (MAX_WORKFLOWS - MIN_WORKFLOWS + 1)) + MIN_WORKFLOWS);
       setUptime((prev) => Math.min(100, prev + 0.001));
     }, 2000);
     return () => clearInterval(id);
