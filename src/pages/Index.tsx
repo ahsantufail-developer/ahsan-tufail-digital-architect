@@ -2,7 +2,7 @@ import { Hero } from '@/components/Hero';
 import { SkillsGrid } from '@/components/SkillsGrid';
 import { Projects } from '@/components/Projects';
 import { AITerminal } from '@/components/AITerminal';
-import { CloudVisualizer } from '@/components/CloudVisualizer';
+import CloudInfrastructureSection from '@/components/CloudInfrastructureSection';
 import { DynamicDock } from '@/components/DynamicDock';
 import { Footer } from '@/components/Footer';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -29,7 +29,7 @@ const Index = () => {
       </section>
       
       <section id="cloud">
-        <CloudVisualizer />
+        <CloudInfrastructureSection />
       </section>
       
       <Footer />
