@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { AIBentoCard } from './AIBentoCard';
 
 interface SkillCardProps {
   title: string;
@@ -18,10 +19,8 @@ const SkillCard = ({ title, items, index }: SkillCardProps) => {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
   const handleMouseLeave = () => {
@@ -42,7 +41,6 @@ const SkillCard = ({ title, items, index }: SkillCardProps) => {
       className="relative group cursor-default perspective-1000"
     >
       <div className="glass-card rounded-2xl p-8 md:p-10 h-full transition-heavy hover:glow-subtle">
-        {/* Hover glow effect */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         <div className="relative z-10">
@@ -76,16 +74,12 @@ const SkillCard = ({ title, items, index }: SkillCardProps) => {
 
 const skills = [
   {
-    title: 'Core Programming',
-    items: ['Python & Go', 'TypeScript/JavaScript', 'Rust & Systems', 'Clean Architecture'],
-  },
-  {
     title: 'Cloud Infrastructure',
     items: ['AWS & GCP & Azure', 'Kubernetes & Docker', 'Terraform & Pulumi', 'Serverless Patterns'],
   },
   {
-    title: 'AI/ML Systems',
-    items: ['LLM Integration', 'MLOps Pipelines', 'Vector Databases', 'Model Optimization'],
+    title: 'Core Programming',
+    items: ['Python & Go', 'TypeScript/JavaScript', 'Rust & Systems', 'Clean Architecture'],
   },
   {
     title: 'Architectural Automation',
@@ -112,7 +106,13 @@ export const SkillsGrid = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {/* Featured AI Bento Card */}
+        <div className="mb-6 md:mb-8">
+          <AIBentoCard />
+        </div>
+
+        {/* Remaining three capability cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {skills.map((skill, index) => (
             <SkillCard key={skill.title} {...skill} index={index} />
           ))}
