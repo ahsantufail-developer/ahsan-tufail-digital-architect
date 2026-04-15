@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, ArrowUpRight } from 'lucide-react';
 
 const socialLinks = [
-  { icon: <Github className="w-5 h-5" />, label: 'GitHub', href: 'https://github.com/ahsantufail' },
-  { icon: <Linkedin className="w-5 h-5" />, label: 'LinkedIn', href: 'https://linkedin.com/in/ahsantufail' },
-  { icon: <Mail className="w-5 h-5" />, label: 'Email', href: 'mailto:hello@ahsantufail.dev' },
+  { icon: <Github className="w-5 h-5" />, label: 'GitHub', href: 'https://github.com/ahsantufail-developer' },
+  { icon: <Linkedin className="w-5 h-5" />, label: 'LinkedIn', href: 'https://linkedin.com/in/ahsantufail-dev' },
+  { icon: <Mail className="w-5 h-5" />, label: 'Email', href: 'mailto:ahsantufail6677@gmail.com' },
+  { icon: <Phone className="w-5 h-5" />, label: '+92 327 6392069', href: 'tel:+923276392069' },
 ];
 
 export const Footer = () => {
@@ -31,7 +32,7 @@ export const Footer = () => {
         </motion.div>
 
         <motion.a
-          href="mailto:hello@ahsantufail.dev"
+          href="mailto:ahsantufail6677@gmail.com"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -39,7 +40,7 @@ export const Footer = () => {
           className="inline-flex items-center gap-4 group mb-16"
         >
           <span className="text-2xl md:text-4xl font-display text-foreground group-hover:text-primary transition-colors duration-300">
-            hello@ahsantufail.dev
+            ahsantufail6677@gmail.com
           </span>
           <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 text-primary transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
         </motion.a>

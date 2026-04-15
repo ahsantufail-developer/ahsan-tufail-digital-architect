@@ -51,8 +51,8 @@ export const SkillsGrid = () => {
           <AILLMCard />
         </motion.div>
 
-        {/* CloudDevOps + FullStack in 2-col grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* CloudDevOps + FullStack stacked vertically, each full width */}
+        <div className="flex flex-col gap-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
