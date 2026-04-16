@@ -10,7 +10,7 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer id="contact" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-24">
+    <footer id="contact" className="relative pt-32 pb-16 md:pt-48 md:pb-16 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
