@@ -62,7 +62,7 @@ const ProjectCardRAG = () => {
             overflow: 'hidden',
           }}
         >
-          Self hosted secure n8n setup — production-ready automation on AWS EC2 free tier with
+          Self-hosted secure n8n setup — production-ready automation on AWS EC2 free tier with
           HTTPS and custom domain via Cloudflare Tunnel.
         </p>
 

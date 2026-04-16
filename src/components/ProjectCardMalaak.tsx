@@ -36,7 +36,7 @@ const ProjectCardMalaak = () => {
               fontFamily: 'system-ui, sans-serif',
             }}
           >
-            Malaak — Property Management SAAS
+            Malaak — Property Management SaaS
           </span>
           <span
             style={{
