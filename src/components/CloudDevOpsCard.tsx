@@ -151,28 +151,8 @@ const PipelineStatus = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        background: '#0a0a0a',
-        border: '1px solid #1f1f1f',
-        borderRadius: 8,
-        padding: 12,
-        zIndex: 10,
-        minWidth: 160,
-      }}
-    >
-      <div
-        style={{
-          fontSize: 10,
-          color: '#f59e0b',
-          fontFamily: 'monospace',
-          marginBottom: 8,
-          letterSpacing: '0.1em',
-        }}
-      >
+    <div className="absolute bottom-0 right-0 bg-[#0a0a0a] border border-[#1f1f1f] rounded-lg p-3 z-10 min-w-[160px]">
+      <div className="text-[10px] font-mono text-[#f59e0b] mb-2 tracking-[0.1em]">
         PIPELINE STATUS
       </div>
       {pipelineSteps.map((step, i) => (
@@ -183,12 +163,7 @@ const PipelineStatus = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
-              style={{
-                fontSize: 11,
-                color: '#22c55e',
-                fontFamily: 'monospace',
-                lineHeight: 1.7,
-              }}
+              className="text-[11px] font-mono text-[#22c55e] leading-[1.7]"
             >
               {step}
             </motion.div>
@@ -207,72 +182,28 @@ const CloudDevOpsCard = () => {
   const onInit = useCallback(() => {}, []);
 
   return (
-    <div
-      style={{
-        background: '#0a0a0a',
-        border: '1px solid #1f1f1f',
-        borderRadius: 16,
-        padding: 40,
-        minHeight: 360,
-        display: 'flex',
-        gap: 32,
-      }}
-    >
+    <div className="bg-[#0a0a0a] border border-[#1f1f1f] rounded-2xl p-10 min-h-[360px] flex gap-8">
       {/* Left column */}
-      <div style={{ width: '40%', display: 'flex', flexDirection: 'column', gap: 14 }}>
-        <span
-          style={{
-            fontSize: 11,
-            textTransform: 'uppercase',
-            letterSpacing: '0.15em',
-            color: '#22d3ee',
-            fontFamily: 'system-ui, sans-serif',
-            fontWeight: 600,
-          }}
-        >
+      <div className="w-2/5 flex flex-col gap-3.5">
+        <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.15em] text-[#22d3ee]">
           Cloud Infrastructure
         </span>
 
-        <h2
-          style={{
-            fontSize: 32,
-            fontWeight: 700,
-            color: '#ffffff',
-            lineHeight: 1.1,
-            fontFamily: 'system-ui, sans-serif',
-            margin: 0,
-          }}
-        >
+        <h2 className="font-display text-[32px] font-bold text-foreground leading-tight m-0">
           Cloud &amp; DevOps
         </h2>
 
-        <p
-          style={{
-            fontSize: 14,
-            color: '#94a3b8',
-            lineHeight: 1.7,
-            margin: 0,
-            fontFamily: 'system-ui, sans-serif',
-          }}
-        >
+        <p className="text-sm font-mono text-[#94a3b8] leading-[1.7] m-0">
           Orchestrate resilient cloud infrastructure and CI/CD pipelines for web applications —
           from containerised Docker deployments on AWS EC2 to edge delivery via Cloudflare, with
           n8n automation running as a live self-hosted service.
         </p>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 4 }}>
+        <div className="flex flex-wrap gap-2 mt-1">
           {skills.map((s) => (
             <span
               key={s}
-              style={{
-                fontSize: 12,
-                color: '#64748b',
-                border: '1px solid #1f1f1f',
-                background: '#0f0f0f',
-                borderRadius: 999,
-                padding: '4px 12px',
-                fontFamily: 'system-ui, sans-serif',
-              }}
+              className="text-xs font-mono text-[#64748b] border border-[#1f1f1f] bg-[#0f0f0f] rounded-full px-3 py-1"
             >
               {s}
             </span>
@@ -281,7 +212,7 @@ const CloudDevOpsCard = () => {
       </div>
 
       {/* Right column */}
-      <div style={{ flex: 1, position: 'relative', minHeight: 280 }}>
+      <div className="flex-1 relative min-h-[280px]">
         <div style={{ width: '100%', height: 320 }}>
           <ReactFlow
             nodes={nodes}

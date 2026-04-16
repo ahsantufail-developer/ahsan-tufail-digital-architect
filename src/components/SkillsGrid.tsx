@@ -14,28 +14,10 @@ export const SkillsGrid = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 md:mb-24"
         >
-          <p
-            style={{
-              fontSize: 11,
-              textTransform: 'uppercase',
-              letterSpacing: '0.15em',
-              color: '#6366f1',
-              fontFamily: 'system-ui, sans-serif',
-              fontWeight: 600,
-              marginBottom: 12,
-            }}
-          >
+          <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.15em] text-[#6366f1] mb-3">
             Technical Expertise
           </p>
-          <h2
-            style={{
-              fontSize: 48,
-              fontWeight: 700,
-              color: '#ffffff',
-              fontFamily: 'system-ui, sans-serif',
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display text-5xl font-bold text-foreground leading-tight">
             Capabilities
           </h2>
         </motion.div>
