@@ -2,7 +2,6 @@ import { Hero } from '@/components/Hero';
 import { SkillsGrid } from '@/components/SkillsGrid';
 import { Projects } from '@/components/Projects';
 import { AITerminal } from '@/components/AITerminal';
-import CloudInfrastructureSection from '@/components/CloudInfrastructureSection';
 import { DynamicDock } from '@/components/DynamicDock';
 import { Footer } from '@/components/Footer';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -26,10 +25,6 @@ const Index = () => {
       
       <section id="terminal">
         <AITerminal />
-      </section>
-      
-      <section id="cloud">
-        <CloudInfrastructureSection />
       </section>
       
       <Footer />
