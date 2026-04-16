@@ -25,9 +25,9 @@ const responses: Record<string, string> = {
 ▸ Multi-cloud infrastructure automation
 ▸ Real-time data processing pipelines
 ▸ Enterprise LLM integration systems`,
-  contact: `▸ Email: hello@ahsantufail.dev
-▸ LinkedIn: /in/ahsantufail
-▸ GitHub: @ahsantufail`,
+  contact: `▸ Email: ahsantufail6677@gmail.com
+▸ LinkedIn: /in/ahsantufail-dev
+▸ GitHub: @ahsantufail-developer`,
 };
 
 export const AITerminal = () => {
