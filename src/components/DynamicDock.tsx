@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Home, Code, Briefcase, Brain, Cloud, Mail } from 'lucide-react';
+import { Home, Code, Briefcase, Brain, Mail } from 'lucide-react';
 import { useState } from 'react';
 
 const dockItems = [
@@ -7,7 +7,6 @@ const dockItems = [
   { icon: <Code className="w-5 h-5" />, label: 'Skills', href: '#skills' },
   { icon: <Briefcase className="w-5 h-5" />, label: 'Projects', href: '#projects' },
   { icon: <Brain className="w-5 h-5" />, label: 'Terminal', href: '#terminal' },
-  { icon: <Cloud className="w-5 h-5" />, label: 'Infrastructure', href: '#cloud' },
   { icon: <Mail className="w-5 h-5" />, label: 'Contact', href: '#contact' },
 ];
 
