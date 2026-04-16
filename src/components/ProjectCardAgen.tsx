@@ -1,5 +1,5 @@
 
-const AGEN_SCREENSHOT = 'https://github.com/user-attachments/assets/7d96a7c5-9a79-4d3c-a3e5-677261838b20';
+const AGEN_SCREENSHOT = '/agen-screenshot.png';
 
 const ProjectCardAgen = () => {
 
@@ -18,7 +18,7 @@ const ProjectCardAgen = () => {
         <img
           src={AGEN_SCREENSHOT}
           alt="AGEN Energy Drink website"
-          referrerPolicy="no-referrer"
+          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
         />
       </div>

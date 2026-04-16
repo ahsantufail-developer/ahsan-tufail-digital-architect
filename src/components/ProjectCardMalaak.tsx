@@ -1,4 +1,4 @@
-const MALAAK_SCREENSHOT = 'https://github.com/user-attachments/assets/d263ec9b-ea8e-4705-b510-fb1f335db71c';
+const MALAAK_SCREENSHOT = '/malaak-screenshot.png';
 const MALAAK_URL = 'https://malaak-property.vercel.app';
 
 const ProjectCardMalaak = () => {
@@ -17,7 +17,7 @@ const ProjectCardMalaak = () => {
         <img
           src={MALAAK_SCREENSHOT}
           alt="Malaak Property Management SaaS"
-          referrerPolicy="no-referrer"
+          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
         />
       </div>

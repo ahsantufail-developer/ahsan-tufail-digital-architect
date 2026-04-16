@@ -1,5 +1,4 @@
-
-const N8N_SCREENSHOT = 'https://github.com/user-attachments/assets/31fdacbd-6a27-4f1f-b24c-bf9cb9c16ea3';
+const N8N_SCREENSHOT = '/n8n-screenshot.png';
 const N8N_GUIDE_URL = 'https://www.notion.so/Host-n8n-on-AWS-EC2-Free-Production-Ready-HTTPS-Custom-Domain-via-Cloudflare-Tunnel-33825269b628811fa102eefc9a069379';
 
 const ProjectCardRAG = () => {
@@ -18,7 +17,7 @@ const ProjectCardRAG = () => {
         <img
           src={N8N_SCREENSHOT}
           alt="Self-hosted n8n on AWS EC2 with Cloudflare Tunnel"
-          referrerPolicy="no-referrer"
+          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
         />
       </div>
