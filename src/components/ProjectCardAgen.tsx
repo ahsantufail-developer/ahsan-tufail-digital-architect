@@ -1,27 +1,10 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
-const cycleWords = ['HYDRATE.', 'PERFORM.', 'DOMINATE.'];
+const AGEN_SCREENSHOT = 'https://github.com/user-attachments/assets/7d96a7c5-9a79-4d3c-a3e5-677261838b20';
 
 const techPills = ['Next.js', 'Vercel', 'Cloudflare', 'Tailwind CSS', 'SEO'];
 const metricBadges = ['100% Lighthouse', 'Live Production', 'Custom Domain'];
 
 const ProjectCardAgen = () => {
-  const [wordIndex, setWordIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    // Hold each word for ~2.6s total (0.6s in + 1.4s hold + 0.6s out)
-    const cycle = () => {
-      setVisible(false);
-      setTimeout(() => {
-        setWordIndex((prev) => (prev + 1) % cycleWords.length);
-        setVisible(true);
-      }, 600);
-    };
-    const id = setInterval(cycle, 2600);
-    return () => clearInterval(id);
-  }, []);
 
   return (
     <div
@@ -33,8 +16,8 @@ const ProjectCardAgen = () => {
         width: '100%',
       }}
     >
-      {/* Top section — browser mockup */}
-      <div style={{ height: 220, background: '#0d0d0d', position: 'relative' }}>
+      {/* Top section — real screenshot */}
+      <div style={{ height: 220, background: '#0d0d0d', overflow: 'hidden', position: 'relative' }}>
         {/* Browser chrome */}
         <div
           style={{
@@ -54,13 +37,7 @@ const ProjectCardAgen = () => {
             <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#22c55e' }} />
           </div>
           {/* URL pill */}
-          <div
-            style={{
-              flex: 1,
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
             <div
               style={{
                 background: '#0a0a0a',
@@ -76,53 +53,11 @@ const ProjectCardAgen = () => {
             </div>
           </div>
         </div>
-
-        {/* Content area */}
-        <div
-          style={{
-            flex: 1,
-            height: 188,
-            background: 'linear-gradient(135deg, #0a0a12 0%, #0d1117 100%)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 8,
-          }}
-        >
-          <AnimatePresence mode="wait">
-            {visible && (
-              <motion.div
-                key={cycleWords[wordIndex]}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
-                style={{
-                  fontSize: 32,
-                  fontWeight: 800,
-                  letterSpacing: '0.25em',
-                  color: '#ffffff',
-                  fontFamily: 'system-ui, sans-serif',
-                  textAlign: 'center',
-                }}
-              >
-                {cycleWords[wordIndex]}
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <div
-            style={{
-              fontSize: 10,
-              color: '#22d3ee',
-              letterSpacing: '0.2em',
-              fontFamily: 'system-ui, sans-serif',
-            }}
-          >
-            drinkagen.shop
-          </div>
-        </div>
+        <img
+          src={AGEN_SCREENSHOT}
+          alt="AGEN Energy Drink website"
+          style={{ width: '100%', height: 188, objectFit: 'cover', objectPosition: 'top' }}
+        />
       </div>
 
       {/* Bottom section */}
@@ -169,8 +104,8 @@ const ProjectCardAgen = () => {
             overflow: 'hidden',
           }}
         >
-          High-performance marketing site for an energy drink brand, built for speed, SEO, and
-          conversion with a custom domain and Cloudflare edge delivery.
+          Real client work deployed — high-performance marketing site for an energy drink brand,
+          built for speed, SEO, and conversion with a custom domain and Cloudflare edge delivery.
         </p>
 
         {/* Row 3: tech pills */}
