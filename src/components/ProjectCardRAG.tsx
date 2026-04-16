@@ -2,9 +2,6 @@
 const N8N_SCREENSHOT = 'https://github.com/user-attachments/assets/31fdacbd-6a27-4f1f-b24c-bf9cb9c16ea3';
 const N8N_GUIDE_URL = 'https://www.notion.so/Host-n8n-on-AWS-EC2-Free-Production-Ready-HTTPS-Custom-Domain-via-Cloudflare-Tunnel-33825269b628811fa102eefc9a069379';
 
-const techPills = ['n8n', 'AWS EC2', 'Cloudflare Tunnel', 'HTTPS', 'Docker'];
-const metricBadges = ['Self-Hosted', 'Production Ready', 'Free Tier'];
-
 const ProjectCardRAG = () => {
   return (
     <div
@@ -17,10 +14,11 @@ const ProjectCardRAG = () => {
       }}
     >
       {/* Top section — real n8n screenshot */}
-      <div style={{ height: 220, background: '#080808', overflow: 'hidden' }}>
+      <div style={{ height: 280, background: '#080808', overflow: 'hidden' }}>
         <img
           src={N8N_SCREENSHOT}
           alt="Self-hosted n8n on AWS EC2 with Cloudflare Tunnel"
+          referrerPolicy="no-referrer"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
         />
       </div>
@@ -56,57 +54,13 @@ const ProjectCardRAG = () => {
             marginTop: 8,
             lineHeight: 1.6,
             fontFamily: 'system-ui, sans-serif',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
           }}
         >
           Self-hosted secure n8n setup — production-ready automation on AWS EC2 free tier with
           HTTPS and custom domain via Cloudflare Tunnel.
         </p>
 
-        {/* Row 3: tech pills */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 16 }}>
-          {techPills.map((t) => (
-            <span
-              key={t}
-              style={{
-                fontSize: 11,
-                color: '#64748b',
-                background: '#0f0f0f',
-                border: '1px solid #1f1f1f',
-                borderRadius: 999,
-                padding: '4px 12px',
-                fontFamily: 'system-ui, sans-serif',
-              }}
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-
-        {/* Row 4: metric badges */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 16 }}>
-          {metricBadges.map((m) => (
-            <span
-              key={m}
-              style={{
-                fontSize: 10,
-                color: '#94a3b8',
-                background: '#0a0a0a',
-                border: '1px solid #1f1f1f',
-                borderRadius: 6,
-                padding: '6px 12px',
-                fontFamily: 'system-ui, sans-serif',
-              }}
-            >
-              {m}
-            </span>
-          ))}
-        </div>
-
-        {/* Row 5: button */}
+        {/* Row 3: button */}
         <div style={{ marginTop: 20 }}>
           <a
             href={N8N_GUIDE_URL}

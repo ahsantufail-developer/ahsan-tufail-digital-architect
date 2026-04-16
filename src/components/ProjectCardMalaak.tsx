@@ -1,9 +1,6 @@
 const MALAAK_SCREENSHOT = 'https://github.com/user-attachments/assets/d263ec9b-ea8e-4705-b510-fb1f335db71c';
 const MALAAK_URL = 'https://malaak-property.vercel.app';
 
-const techPills = ['Next.js', 'Supabase', 'Tailwind CSS', 'Vercel', 'Figma Design System'];
-const metricBadges = ['Figma Design System', 'Overseas Pakistani Market', 'SaaS Architecture'];
-
 const ProjectCardMalaak = () => {
   return (
     <div
@@ -16,10 +13,11 @@ const ProjectCardMalaak = () => {
       }}
     >
       {/* Top section — real screenshot */}
-      <div style={{ height: 220, background: '#111110', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ height: 280, background: '#111110', overflow: 'hidden', position: 'relative' }}>
         <img
           src={MALAAK_SCREENSHOT}
           alt="Malaak Property Management SaaS"
+          referrerPolicy="no-referrer"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
         />
       </div>
@@ -62,57 +60,13 @@ const ProjectCardMalaak = () => {
             marginTop: 8,
             lineHeight: 1.6,
             fontFamily: 'system-ui, sans-serif',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
           }}
         >
           A full-featured property management SaaS for overseas Pakistanis to monitor, rent, and
           manage real estate portfolios — built with a Figma design system and Supabase backend.
         </p>
 
-        {/* Row 3: tech pills */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 16 }}>
-          {techPills.map((t) => (
-            <span
-              key={t}
-              style={{
-                fontSize: 11,
-                color: '#64748b',
-                background: '#1c1917',
-                border: '1px solid #292524',
-                borderRadius: 999,
-                padding: '4px 12px',
-                fontFamily: 'system-ui, sans-serif',
-              }}
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-
-        {/* Row 4: metric badges */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 16 }}>
-          {metricBadges.map((m) => (
-            <span
-              key={m}
-              style={{
-                fontSize: 10,
-                color: '#94a3b8',
-                background: '#0c0a09',
-                border: '1px solid #292524',
-                borderRadius: 6,
-                padding: '6px 12px',
-                fontFamily: 'system-ui, sans-serif',
-              }}
-            >
-              {m}
-            </span>
-          ))}
-        </div>
-
-        {/* Row 5: button */}
+        {/* Row 3: button */}
         <div style={{ marginTop: 20 }}>
           <a
             href={MALAAK_URL}
