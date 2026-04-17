@@ -5,7 +5,7 @@ import ProjectCardMalaak from './ProjectCardMalaak';
 
 export const Projects = () => {
   return (
-    <section className="relative py-24 px-6 md:px-12 lg:px-24">
+    <section className="relative py-24 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -28,13 +28,8 @@ export const Projects = () => {
             Selected Work
           </p>
           <h2
-            style={{
-              fontSize: 48,
-              fontWeight: 700,
-              color: '#ffffff',
-              fontFamily: 'system-ui, sans-serif',
-              lineHeight: 1.1,
-            }}
+            className="font-display text-4xl sm:text-5xl font-bold text-white leading-tight"
+            style={{ fontFamily: 'system-ui, sans-serif' }}
           >
             Projects
           </h2>

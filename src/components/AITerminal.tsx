@@ -74,7 +74,7 @@ export const AITerminal = () => {
   }, [lines]);
 
   return (
-    <section className="relative py-32 md:py-48 px-6 md:px-12 lg:px-24">
+    <section className="relative py-24 sm:py-32 md:py-48 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -105,14 +105,14 @@ export const AITerminal = () => {
               <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
               <span className="w-3 h-3 rounded-full bg-green-500/80" />
             </div>
-            <span className="ml-4 text-xs font-mono text-muted-foreground">ahsan@cloud ~ query-experience</span>
+            <span className="ml-2 sm:ml-4 text-xs font-mono text-muted-foreground truncate">ahsan@cloud ~ query-experience</span>
           </div>
 
           {/* Terminal body */}
           <div 
             ref={terminalRef}
             onClick={() => inputRef.current?.focus()}
-            className="h-80 md:h-96 overflow-y-auto p-6 font-mono text-sm cursor-text"
+            className="h-64 sm:h-80 md:h-96 overflow-y-auto p-4 sm:p-6 font-mono text-xs sm:text-sm cursor-text"
           >
             {lines.map((line, i) => (
               <div 
