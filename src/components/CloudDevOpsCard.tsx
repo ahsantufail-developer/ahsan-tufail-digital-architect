@@ -182,7 +182,7 @@ const CloudDevOpsCard = () => {
   const onInit = useCallback(() => {}, []);
 
   return (
-    <div className="bg-[#0a0a0a] border border-[#1f1f1f] rounded-2xl p-10 min-h-[360px] flex gap-8">
+    <div className="bg-[#0a0a0a] border border-[#1f1f1f] rounded-2xl p-10 min-h-[360px] h-full flex gap-8 transition-colors duration-300 hover:border-[#22d3ee]/20">
       {/* Left column */}
       <div className="w-2/5 flex flex-col gap-3.5">
         <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.15em] text-[#22d3ee]">
