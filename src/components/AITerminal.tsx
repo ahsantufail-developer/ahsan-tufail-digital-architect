@@ -8,26 +8,20 @@ interface TerminalLine {
 
 const responses: Record<string, string> = {
   help: `Available commands:
-  → experience    View professional experience
   → skills        List technical skills
   → projects      View notable projects
   → contact       Get contact information
   → clear         Clear terminal`,
-  experience: `▸ 7+ years in software engineering
-▸ Specialized in cloud architecture & AI systems
-▸ Led teams of 5-20 engineers
-▸ Built systems serving 10M+ users`,
-  skills: `▸ Languages: Python, Go, TypeScript, Rust
-▸ Cloud: AWS, GCP, Azure, Kubernetes
-▸ AI/ML: LLMs, MLOps, Vector DBs
-▸ DevOps: Terraform, GitOps, Platform Eng`,
-  projects: `▸ Cloud-native AI platform (10M+ inferences/day)
-▸ Multi-cloud infrastructure automation
-▸ Real-time data processing pipelines
-▸ Enterprise LLM integration systems`,
+  skills: `▸ AI & LLM: RAG Systems (Supabase Vector Store), AI Agents, n8n Automation, MCP, Prompt Engineering
+▸ Cloud & DevOps: AWS EC2, Cloudflare Tunnel, Docker, Vercel, CI/CD Pipelines, Git & GitHub, Google Cloud
+▸ Full Stack: Next.js, React, Tailwind CSS, Node.js, Express API, Supabase, Figma, Auth (JWT/OAuth)`,
+  projects: `▸ Agen — Energy Drink Brand [LIVE] → drinkagen.shop
+▸ n8n on AWS EC2 — Self-Hosted Setup [LIVE]
+▸ Malaak — Property Management SaaS [IN DEVELOPMENT]`,
   contact: `▸ Email: ahsantufail6677@gmail.com
 ▸ LinkedIn: /in/ahsantufail-dev
-▸ GitHub: @ahsantufail-developer`,
+▸ GitHub: @ahsantufail-developer
+▸ Phone: +92 327 6392069`,
 };
 
 export const AITerminal = () => {
@@ -163,7 +157,7 @@ export const AITerminal = () => {
           transition={{ delay: 0.5 }}
           className="text-center text-xs text-muted-foreground mt-4 font-mono"
         >
-          Try: help, experience, skills, projects, contact
+          Try: help, skills, projects, contact
         </motion.p>
       </div>
     </section>
