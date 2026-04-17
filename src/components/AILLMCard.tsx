@@ -158,7 +158,7 @@ const AILLMCard = () => {
   const onInit = useCallback(() => {}, []);
 
   return (
-    <div className="bg-[#0a0a0a] border border-[#1f1f1f] rounded-2xl p-10 min-h-[420px] flex gap-8">
+    <div className="bg-[#0a0a0a] border border-[#1f1f1f] rounded-2xl p-10 min-h-[420px] flex gap-8 transition-colors duration-300 hover:border-[#6366f1]/20">
       {/* Left column */}
       <div className="w-2/5 flex flex-col gap-4">
         <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.15em] text-[#6366f1]">
