@@ -107,7 +107,7 @@ const cardVariants = {
 
 export const SkillsGrid = () => {
   return (
-    <section className="relative py-24 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section className="relative py-24 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden">
 
       {/* Dot-grid texture */}
       <div

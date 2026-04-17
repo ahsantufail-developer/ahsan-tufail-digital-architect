@@ -3,7 +3,7 @@ import profileImage from '@/assets/ahsan-profile.png';
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden px-6 md:px-12 lg:px-24">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden px-4 sm:px-6 md:px-12 lg:px-24">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-obsidian-light opacity-50" />
       
@@ -18,15 +18,15 @@ export const Hero = () => {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16">
           {/* Left: Text Content */}
-          <div className="flex-1 space-y-6 md:space-y-8">
+          <div className="flex-1 space-y-4 sm:space-y-6 md:space-y-8 text-center lg:text-left">
 
             <motion.h1
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className="font-display text-[14vw] md:text-[10vw] lg:text-[6vw] leading-[0.85] tracking-tight text-gradient"
+              className="font-display text-[18vw] sm:text-[14vw] md:text-[10vw] lg:text-[6vw] leading-[0.85] tracking-tight text-gradient"
             >
               AHSAN
               <br />
@@ -37,7 +37,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-              className="max-w-xl text-base md:text-lg text-muted-foreground font-light leading-relaxed"
+              className="max-w-xl mx-auto lg:mx-0 text-sm sm:text-base md:text-lg text-muted-foreground font-light leading-relaxed"
             >
               Engineering robust systems at the intersection of cloud infrastructure, 
               artificial intelligence, and architectural automation.
@@ -49,7 +49,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className="flex-shrink-0 w-[280px] h-[340px] md:w-[340px] md:h-[420px] lg:w-[400px] lg:h-[480px] relative"
+            className="flex-shrink-0 w-[220px] h-[270px] sm:w-[280px] sm:h-[340px] md:w-[340px] md:h-[420px] lg:w-[400px] lg:h-[480px] relative"
           >
             {/* Glow behind image */}
             <div className="absolute inset-0 rounded-2xl bg-primary/10 blur-3xl scale-110" />

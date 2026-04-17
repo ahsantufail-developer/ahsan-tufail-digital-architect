@@ -10,7 +10,7 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer id="contact" className="relative pt-32 pb-16 md:pt-48 md:pb-16 px-6 md:px-12 lg:px-24">
+    <footer id="contact" className="relative pt-24 pb-16 sm:pt-32 sm:pb-16 md:pt-48 md:pb-16 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -22,7 +22,7 @@ export const Footer = () => {
           <p className="text-[10px] font-mono text-titanium tracking-[0.3em] uppercase mb-4">
             Get In Touch
           </p>
-          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-gradient mb-6">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-gradient mb-6">
             Let's Build<br />Something Great
           </h2>
           <p className="max-w-xl text-muted-foreground font-light">
@@ -37,12 +37,12 @@ export const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-4 group mb-16"
+          className="inline-flex items-center gap-2 sm:gap-4 group mb-16 max-w-full"
         >
-          <span className="text-2xl md:text-4xl font-display text-foreground group-hover:text-primary transition-colors duration-300">
+          <span className="text-lg sm:text-2xl md:text-4xl font-display text-foreground group-hover:text-primary transition-colors duration-300 break-all sm:break-normal">
             ahsantufail6677@gmail.com
           </span>
-          <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 text-primary transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+          <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary flex-shrink-0 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
         </motion.a>
 
         <motion.div

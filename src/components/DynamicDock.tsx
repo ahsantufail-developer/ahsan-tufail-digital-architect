@@ -31,7 +31,7 @@ export const DynamicDock = () => {
       <motion.div
         layout
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="flex items-center gap-1 px-4 py-3 rounded-2xl glass-card"
+        className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-4 py-2 sm:py-3 rounded-2xl glass-card"
       >
         {dockItems.map((item, index) => (
           <motion.a
@@ -43,7 +43,7 @@ export const DynamicDock = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 + index * 0.08, duration: 0.4 }}
-            className="group relative flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-primary/10 transition-colors duration-300"
+            className="group relative flex items-center gap-1.5 px-2 sm:px-3 py-2 rounded-xl hover:bg-primary/10 transition-colors duration-300"
           >
             <span className="text-titanium group-hover:text-primary transition-colors duration-300">
               {item.icon}
