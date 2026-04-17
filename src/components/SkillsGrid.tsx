@@ -5,32 +5,6 @@ import type { LucideIcon } from 'lucide-react';
 // Shared easing curve used throughout this section
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 
-// ── Logo map: badge label → public image path ─────────────────────────────────
-
-const logoMap: Record<string, string> = {
-  'n8n Automation':  '/n8n-wordmark-light.png',
-  'MCP Servers':     '/model-context-protocol-light.png',
-  'OpenAI API':      '/openclaw.png',
-  'Python':          '/python.png',
-  'Docker':          '/docker.png',
-  'Vercel':          '/vercel_wordmark.png',
-  'GitHub Actions':  '/github_dark.png',
-  'Google Cloud':    '/google-cloud.png',
-  'React':           '/react_wordmark_light.png',
-  'Figma':           '/figma.png',
-  'HTML5':           '/html5.png',
-  'CSS3':            '/css_old.png',
-  'Node.js':         '/nodejs.png',
-  'Bash':            '/bash.png',
-  'Supabase':        '/supabase_wordmark_light.png',
-  'Git':             '/git.png',
-  'GitHub':          '/github_dark.png',
-  'GitHub Copilot':  '/copilot.png',
-};
-
-// Wordmark images already embed the technology name — show image only, no label
-const wordmarkBadges = new Set(['n8n Automation', 'Vercel', 'React', 'Supabase']);
-
 // ── Data ──────────────────────────────────────────────────────────────────────
 
 interface SkillCard {
@@ -52,7 +26,7 @@ const skillCards: SkillCard[] = [
     title: 'Intelligent Agents & Pipelines',
     description:
       'Design and deployment of performant RAG systems and autonomous AI Agents — from vector embeddings to multi-step agentic workflows with tool use.',
-    badges: ['n8n Automation', 'MCP Servers', 'OpenAI API', 'Python'],
+    badges: ['RAG Systems', 'AI Agents', 'n8n Automation', 'MCP Servers', 'Prompt Engineering', 'OpenAI API', 'Anthropic API'],
   },
   {
     id: 'cloud',
@@ -62,7 +36,7 @@ const skillCards: SkillCard[] = [
     title: 'Resilient Cloud Infrastructure',
     description:
       'Orchestrate cloud environments and CI/CD pipelines — from containerised Docker deployments on AWS EC2 to edge delivery via Cloudflare Tunnel.',
-    badges: ['Docker', 'Vercel', 'GitHub Actions', 'Google Cloud'],
+    badges: ['AWS EC2', 'Docker', 'Cloudflare Tunnel', 'Vercel', 'CI/CD Pipelines', 'GitHub Actions', 'Google Cloud'],
   },
   {
     id: 'frontend',
@@ -72,7 +46,7 @@ const skillCards: SkillCard[] = [
     title: 'Polished User Interfaces',
     description:
       'Building pixel-perfect, animated interfaces using React and Next.js — converting Figma designs into production-ready responsive UIs.',
-    badges: ['React', 'Figma', 'HTML5', 'CSS3'],
+    badges: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Figma → Code', 'TypeScript', 'Vite'],
   },
   {
     id: 'backend',
@@ -81,8 +55,8 @@ const skillCards: SkillCard[] = [
     label: 'Backend & APIs',
     title: 'Scalable API Architecture',
     description:
-      'Robust Node.js APIs with rate limiting, authentication, and RESTful design patterns engineered for production scale.',
-    badges: ['Node.js', 'Python', 'Bash'],
+      'Robust Node.js and Express APIs with rate limiting, authentication, and RESTful design patterns engineered for production scale.',
+    badges: ['Node.js', 'Express', 'REST APIs', 'Rate Limiting', 'JWT Auth', 'OAuth 2.0', 'Middleware'],
   },
   {
     id: 'databases',
@@ -92,7 +66,7 @@ const skillCards: SkillCard[] = [
     title: 'Data Storage & Retrieval',
     description:
       'Combining relational, vector, and in-memory databases — Supabase for persistence and real-time subscriptions, Redis for blazing-fast caching.',
-    badges: ['Supabase'],
+    badges: ['Supabase', 'PostgreSQL', 'Vector Store', 'Redis Cache', 'Row-Level Security', 'Realtime'],
   },
   {
     id: 'tooling',
@@ -102,7 +76,7 @@ const skillCards: SkillCard[] = [
     title: 'Developer Toolchain',
     description:
       'End-to-end developer workflow from version control to AI-assisted coding — the tools that keep systems fast, consistent, and reliable.',
-    badges: ['Git', 'GitHub', 'GitHub Copilot', 'n8n Automation', 'Bash'],
+    badges: ['Git & GitHub', 'VS Code', 'Cursor AI', 'n8n Automation', 'ESLint', 'TypeScript', 'Postman'],
   },
 ];
 
@@ -269,35 +243,23 @@ const SkillCardItem = ({
 
       {/* Tech badges */}
       <div className="flex flex-wrap gap-2">
-        {card.badges.map((badge) => {
-          const logoSrc = logoMap[badge];
-          const isWordmark = wordmarkBadges.has(badge);
-          return (
+        {card.badges.map((badge) => (
+          <span
+            key={badge}
+            className="inline-flex items-center gap-1.5 text-[11px] font-mono rounded-full px-2.5 py-1"
+            style={{
+              background: palette.bg,
+              color: palette.text,
+              border: `1px solid ${palette.border}`,
+            }}
+          >
             <span
-              key={badge}
-              className="inline-flex items-center gap-1.5 text-[11px] font-mono rounded-full px-2.5 py-1"
-              style={{
-                background: palette.bg,
-                color: palette.text,
-                border: `1px solid ${palette.border}`,
-              }}
-            >
-              {logoSrc ? (
-                <img
-                  src={logoSrc}
-                  alt={badge}
-                  className={isWordmark ? 'h-3.5 w-auto object-contain' : 'h-3.5 w-3.5 object-contain shrink-0'}
-                />
-              ) : (
-                <span
-                  className="w-1 h-1 rounded-full shrink-0"
-                  style={{ background: palette.dot }}
-                />
-              )}
-              {!isWordmark && badge}
-            </span>
-          );
-        })}
+              className="w-1 h-1 rounded-full shrink-0"
+              style={{ background: palette.dot }}
+            />
+            {badge}
+          </span>
+        ))}
       </div>
     </motion.div>
   );
