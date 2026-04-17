@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import { Brain, Cloud, Layers, Server, Database, Wrench } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
+// Shared easing curve used throughout this section
+const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
+
 // ── Data ──────────────────────────────────────────────────────────────────────
 
 interface SkillCard {
@@ -97,7 +100,7 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 36 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: EASE_OUT_EXPO } },
 };
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -128,7 +131,7 @@ export const SkillsGrid = () => {
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: EASE_OUT_EXPO }}
           className="mb-16 md:mb-20"
         >
           {/* Badge pill */}
@@ -195,18 +198,13 @@ const SkillCardItem = ({
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ y: -6, transition: { duration: 0.22, ease: 'easeOut' } }}
+      whileHover={{
+        y: -6,
+        borderColor: `${card.accent}38`,
+        boxShadow: `0 0 36px ${card.accent}10, 0 8px 40px rgba(0,0,0,0.45)`,
+        transition: { duration: 0.22, ease: 'easeOut' },
+      }}
       className="group relative rounded-2xl bg-[#0f0f0f] border border-[#1c1c1c] p-7 flex flex-col gap-5 cursor-default overflow-hidden"
-      onMouseEnter={(e) => {
-        const el = e.currentTarget as HTMLElement;
-        el.style.borderColor = `${card.accent}38`;
-        el.style.boxShadow = `0 0 36px ${card.accent}10, 0 8px 40px rgba(0,0,0,0.45)`;
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget as HTMLElement;
-        el.style.borderColor = '#1c1c1c';
-        el.style.boxShadow = 'none';
-      }}
     >
       {/* Corner glow that appears on hover */}
       <div
