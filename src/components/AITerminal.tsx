@@ -74,30 +74,31 @@ export const AITerminal = () => {
   }, [lines]);
 
   return (
-    <section className="relative py-24 sm:py-32 md:py-48 px-4 sm:px-6 md:px-12 lg:px-24">
+    <section className="relative py-32 lg:py-44 px-6 md:px-12 lg:px-24">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-16"
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20 lg:mb-28 max-w-3xl"
         >
-          <p className="text-[10px] font-mono text-titanium tracking-[0.3em] uppercase mb-4">
-            Interactive Interface
-          </p>
-          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-gradient">
-            The AI Brain
+          <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/40 mb-8">
+            — 004 · Interactive Interface
+          </div>
+          <h2 className="font-display text-6xl md:text-7xl lg:text-[6.5rem] font-normal text-white leading-[0.95] tracking-tight">
+            The AI <em className="italic text-white/60">brain.</em>
           </h2>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="glass-card rounded-2xl overflow-hidden"
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          className="rounded-2xl overflow-hidden bg-[#0a0a0a] border border-white/[0.06]"
         >
+
           {/* Terminal header */}
           <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50 bg-obsidian-light/50">
             <div className="flex gap-2">

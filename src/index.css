@@ -49,14 +49,14 @@
     --obsidian: 0 0% 2%;
     --obsidian-light: 0 0% 6%;
 
-    /* Glassmorphism */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    /* Surface */
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-shadow: none;
 
-    /* Glow effects */
-    --glow-primary: 0 0 40px hsl(200 100% 60% / 0.3);
-    --glow-subtle: 0 0 20px hsl(200 100% 60% / 0.15);
+    /* Glow effects (disabled — kept as no-ops for backward compat) */
+    --glow-primary: none;
+    --glow-subtle: none;
 
     /* Sidebar */
     --sidebar-background: 0 0% 4%;
@@ -132,18 +132,10 @@
     box-shadow: var(--glass-shadow);
   }
 
-  /* Glow effects */
-  .glow-primary {
-    box-shadow: var(--glow-primary);
-  }
-
-  .glow-subtle {
-    box-shadow: var(--glow-subtle);
-  }
-
-  .text-glow {
-    text-shadow: 0 0 40px hsl(var(--primary) / 0.5);
-  }
+  /* Glow effects (neutralized) */
+  .glow-primary { box-shadow: none; }
+  .glow-subtle { box-shadow: none; }
+  .text-glow { text-shadow: none; }
 
   /* Gradient text */
   .text-gradient {
@@ -160,20 +152,14 @@
     background-clip: text;
   }
 
-  /* Status indicator */
+  /* Status indicator — opacity pulse only, no glow */
   .status-pulse {
-    animation: pulse-glow 2s ease-in-out infinite;
+    animation: pulse-soft 2.4s ease-in-out infinite;
   }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      opacity: 1;
-      box-shadow: 0 0 8px hsl(var(--primary) / 0.6);
-    }
-    50% {
-      opacity: 0.7;
-      box-shadow: 0 0 16px hsl(var(--primary) / 0.8);
-    }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
   }
 
   /* Terminal cursor blink */
@@ -186,18 +172,14 @@
     50% { opacity: 0; }
   }
 
-  /* Node glow animation */
+  /* Node — subtle opacity pulse, no glow */
   .node-glow {
     animation: node-pulse 3s ease-in-out infinite;
   }
 
   @keyframes node-pulse {
-    0%, 100% {
-      filter: drop-shadow(0 0 4px hsl(var(--primary) / 0.5));
-    }
-    50% {
-      filter: drop-shadow(0 0 12px hsl(var(--primary) / 0.8));
-    }
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
   }
 
   /* Heavy transition */

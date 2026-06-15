@@ -10,23 +10,23 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer id="contact" className="relative pt-24 pb-16 sm:pt-32 sm:pb-16 md:pt-48 md:pb-16 px-4 sm:px-6 md:px-12 lg:px-24">
+    <footer id="contact" className="relative pt-32 pb-16 lg:pt-44 lg:pb-20 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-16 md:mb-24"
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20 lg:mb-28 max-w-3xl"
         >
-          <p className="text-[10px] font-mono text-titanium tracking-[0.3em] uppercase mb-4">
-            Get In Touch
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-gradient mb-6">
-            Let's Build<br />Something Great
+          <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/40 mb-8">
+            — 005 · Get In Touch
+          </div>
+          <h2 className="font-display text-6xl md:text-7xl lg:text-[6.5rem] font-normal text-white leading-[0.95] tracking-tight mb-10">
+            Let's build<br /><em className="italic text-white/60">something great.</em>
           </h2>
-          <p className="max-w-xl text-muted-foreground font-light">
-            Open to discussing new projects, creative ideas, or opportunities 
+          <p className="max-w-xl text-base text-muted-foreground font-light leading-relaxed">
+            Open to discussing new projects, creative ideas, or opportunities
             to be part of your vision.
           </p>
         </motion.div>
@@ -37,9 +37,9 @@ export const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 sm:gap-4 group mb-16 max-w-full"
+          className="inline-flex items-center gap-3 sm:gap-5 group mb-20 lg:mb-24 max-w-full"
         >
-          <span className="text-lg sm:text-2xl md:text-4xl font-display text-foreground group-hover:text-primary transition-colors duration-300 break-all sm:break-normal">
+          <span className="text-xl sm:text-2xl md:text-4xl font-display text-foreground group-hover:text-primary transition-colors duration-300 break-all sm:break-normal">
             ahsantufail6677@gmail.com
           </span>
           <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary flex-shrink-0 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
@@ -50,7 +50,7 @@ export const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap gap-4"
+          className="flex flex-wrap gap-3"
         >
           {socialLinks.map((link, index) => (
             <motion.a
@@ -62,9 +62,9 @@ export const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-              className="flex items-center gap-2 px-5 py-3 rounded-lg glass-card hover:glow-subtle hover:border-primary/50 transition-all duration-300 group"
+              className="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#0a0a0a] border border-white/[0.06] hover:border-white/[0.14] transition-colors duration-300 group"
             >
-              <span className="text-titanium group-hover:text-primary transition-colors">
+              <span className="text-titanium group-hover:text-foreground transition-colors">
                 {link.icon}
               </span>
               <span className="text-sm font-mono text-foreground/80 group-hover:text-foreground transition-colors">
