@@ -49,14 +49,14 @@
     --obsidian: 0 0% 2%;
     --obsidian-light: 0 0% 6%;
 
-    /* Glassmorphism */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    /* Surface */
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-shadow: none;
 
-    /* Glow effects */
-    --glow-primary: 0 0 40px hsl(200 100% 60% / 0.3);
-    --glow-subtle: 0 0 20px hsl(200 100% 60% / 0.15);
+    /* Glow effects (disabled — kept as no-ops for backward compat) */
+    --glow-primary: none;
+    --glow-subtle: none;
 
     /* Sidebar */
     --sidebar-background: 0 0% 4%;
