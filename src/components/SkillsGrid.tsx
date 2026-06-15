@@ -1,5 +1,5 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useRef, useState, ReactNode } from 'react';
+import { motion } from 'framer-motion';
+import { useState, ReactNode } from 'react';
 import { AINeuralViz } from './skills/AINeuralViz';
 import { DatabasesViz } from './skills/DatabasesViz';
 import { CloudOrbitViz } from './skills/CloudOrbitViz';
@@ -9,239 +9,146 @@ import { ToolingRailViz } from './skills/ToolingRailViz';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-// ── Shared card shell ────────────────────────────────────────────────────────
-
-interface ShellProps {
-  accent: string;
-  label: string;
+interface CardProps {
+  index: string;
   title: string;
-  description: string;
-  badges: string[];
+  caption: string;
   viz: (hovered: boolean) => ReactNode;
   className?: string;
-  vizClassName?: string;
-  layout?: 'stacked' | 'split' | 'rail';
-  tilt?: boolean;
+  vizHeight?: string;
   delay?: number;
+  large?: boolean;
 }
 
-const Card = ({
-  accent, label, title, description, badges, viz,
-  className = '', vizClassName = '', layout = 'stacked', tilt = false, delay = 0,
-}: ShellProps) => {
+const Card = ({ index, title, caption, viz, className = '', vizHeight = 'h-[260px]', delay = 0, large = false }: CardProps) => {
   const [hovered, setHovered] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const rx = useSpring(useTransform(my, [-0.5, 0.5], [3, -3]), { stiffness: 250, damping: 25 });
-  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-3, 3]), { stiffness: 250, damping: 25 });
-
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!tilt || !ref.current) return;
-    const r = ref.current.getBoundingClientRect();
-    mx.set((e.clientX - r.left) / r.width - 0.5);
-    my.set((e.clientY - r.top) / r.height - 0.5);
-  };
-  const reset = () => { mx.set(0); my.set(0); setHovered(false); };
-
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.75, ease: EASE, delay }}
+      transition={{ duration: 0.9, ease: EASE, delay }}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={reset}
-      onMouseMove={handleMove}
-      style={tilt ? { rotateX: rx, rotateY: ry, transformPerspective: 1200 } : undefined}
-      className={`group relative rounded-2xl bg-[#0a0a0a] border border-[#1c1c1c] overflow-hidden
-        transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 ${className}`}
+      onMouseLeave={() => setHovered(false)}
+      className={`group relative rounded-3xl bg-[#0a0a0a] border border-white/[0.06] overflow-hidden
+        transition-all duration-500 hover:border-white/[0.12] hover:-translate-y-1 ${className}`}
     >
-      {/* hover border tint */}
-      <div
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ boxShadow: `inset 0 0 0 1px ${accent}55, 0 24px 60px -20px ${accent}30` }}
-      />
-      {/* corner glow */}
-      <div
-        className="pointer-events-none absolute -top-32 -right-32 w-64 h-64 rounded-full opacity-0 group-hover:opacity-40 blur-3xl transition-opacity duration-700"
-        style={{ background: accent }}
-      />
+      {/* subtle hover halo */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[480px] h-[480px] rounded-full bg-white/[0.025] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-      <div className={`relative h-full ${
-        layout === 'split' ? 'grid grid-cols-1 lg:grid-cols-2 gap-6 p-7 lg:p-9' :
-        layout === 'rail' ? 'flex flex-col gap-5 p-7 lg:p-9' :
-        'flex flex-col gap-5 p-7'
-      }`}>
-        {/* Text column */}
-        <div className="flex flex-col gap-4 min-w-0">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: accent }} />
-            <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.18em]"
-              style={{ color: accent }}>
-              {label}
-            </span>
-          </div>
-          <h3 className="font-display text-[22px] lg:text-[26px] font-bold text-foreground leading-[1.15]">
-            {title}
-          </h3>
-          <p className="text-[12.5px] font-mono text-[#5c6b80] leading-[1.75]">
-            {description}
-          </p>
-          <div className="flex flex-wrap gap-1.5 mt-1">
-            {badges.map(b => (
-              <span key={b}
-                className="text-[10px] font-mono rounded-full px-2 py-0.5 border"
-                style={{
-                  color: `${accent}cc`,
-                  borderColor: `${accent}30`,
-                  background: `${accent}08`,
-                }}>
-                {b}
-              </span>
-            ))}
-          </div>
+      <div className="relative flex flex-col h-full">
+        {/* Visualization — dominant */}
+        <div className={`relative ${vizHeight} ${large ? 'lg:h-[420px]' : ''} w-full overflow-hidden`}>
+          {viz(hovered)}
         </div>
 
-        {/* Visualization */}
-        <div className={`relative ${vizClassName || (layout === 'rail' ? 'h-[170px]' : 'h-[240px]')}`}>
-          {viz(hovered)}
+        {/* Hairline divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+
+        {/* Minimal text — lots of breathing room */}
+        <div className="flex items-end justify-between gap-6 px-8 lg:px-10 py-8 lg:py-10">
+          <div className="min-w-0">
+            <h3 className={`font-display ${large ? 'text-4xl lg:text-5xl' : 'text-2xl lg:text-3xl'} font-normal text-white/95 leading-[1.1] tracking-tight`}>
+              {title}
+            </h3>
+            <p className="mt-3 text-[11px] font-mono uppercase tracking-[0.22em] text-white/30">
+              {caption}
+            </p>
+          </div>
+          <span className="shrink-0 text-[10px] font-mono text-white/25 tabular-nums tracking-widest">
+            {index}
+          </span>
         </div>
       </div>
     </motion.div>
   );
 };
 
-// ── Section ───────────────────────────────────────────────────────────────────
-
 export const SkillsGrid = () => {
   return (
-    <section className="relative py-24 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden">
-      {/* Dot grid */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.022]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #94a3b8 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-        }} />
-      {/* Ambient glows */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-48 -left-48 w-[700px] h-[700px] rounded-full bg-[#6366f1] opacity-[0.055] blur-[130px]" />
-        <div className="absolute -bottom-48 -right-48 w-[700px] h-[700px] rounded-full bg-[#22d3ee] opacity-[0.045] blur-[130px]" />
-      </div>
-
+    <section className="relative py-32 lg:py-44 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden bg-[#050505]">
       <div className="max-w-7xl mx-auto relative">
-        {/* Header */}
+        {/* Header — minimal, spacious */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="mb-14 md:mb-20"
+          transition={{ duration: 0.9, ease: EASE }}
+          className="mb-20 lg:mb-32 max-w-3xl"
         >
-          <div className="inline-flex items-center gap-2 mb-5 text-[11px] font-mono font-semibold uppercase tracking-[0.15em] text-[#6366f1] border border-[#6366f1]/25 bg-[#6366f1]/[0.06] rounded-full px-4 py-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1] animate-pulse" />
-            Technical Stack
+          <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/40 mb-8">
+            — 002 · Capabilities
           </div>
-
-          <h2 className="font-display text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-foreground leading-[1.05] mb-5">
-            Skills that build{' '}
-            <span style={{
-              background: 'linear-gradient(130deg, #6366f1 0%, #22d3ee 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>
-              real things
-            </span>
+          <h2 className="font-display text-6xl md:text-7xl lg:text-[6.5rem] font-normal text-white leading-[0.95] tracking-tight">
+            Built to <em className="italic text-white/60">ship.</em>
           </h2>
-
-          <p className="text-[#64748b] font-mono text-sm leading-relaxed max-w-xl">
-            A full-spectrum engineering toolkit spanning AI pipelines, cloud infrastructure,
-            modern interfaces, and the automation layer that connects them all.
-          </p>
         </motion.div>
 
-        {/* Bento grid — 12 col */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 auto-rows-min">
-          {/* AI featured */}
-          <div className="lg:col-span-8">
+        {/* Bento — quieter grid, more air */}
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 lg:gap-6">
+          {/* AI — hero */}
+          <div className="lg:col-span-6">
             <Card
-              accent="#6366f1"
-              label="AI & LLM · Primary"
-              title="Intelligent agents that ship to production"
-              description="Performant RAG pipelines, autonomous agents, and tool-use workflows — from vector embeddings to multi-step reasoning with live tool calls."
-              badges={['RAG', 'Agents', 'n8n', 'MCP', 'OpenAI', 'Anthropic', 'Prompt Eng']}
+              index="01"
+              title="Intelligent agents."
+              caption="AI · RAG · Agents"
               viz={(h) => <AINeuralViz hovered={h} />}
-              layout="split"
-              tilt
-              vizClassName="h-[280px]"
-            />
-          </div>
-
-          {/* Databases */}
-          <div className="lg:col-span-4">
-            <Card
-              accent="#f43f5e"
-              label="Databases"
-              title="Storage tuned for speed"
-              description="Relational, vector, and in-memory layers working in concert — Supabase, pgvector, Redis."
-              badges={['Postgres', 'pgvector', 'Redis', 'RLS']}
-              viz={(h) => <DatabasesViz hovered={h} />}
-              delay={0.05}
+              large
             />
           </div>
 
           {/* Cloud */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <Card
-              accent="#22d3ee"
-              label="Cloud & DevOps"
-              title="Edge-delivered, always on"
-              description="Docker on EC2, Vercel previews, Cloudflare tunnels and CI/CD that ships green."
-              badges={['AWS', 'Docker', 'Cloudflare', 'CI/CD']}
+              index="02"
+              title="Edge delivered."
+              caption="Cloud · DevOps"
               viz={(h) => <CloudOrbitViz hovered={h} />}
+              delay={0.05}
+            />
+          </div>
+
+          {/* Databases */}
+          <div className="lg:col-span-3">
+            <Card
+              index="03"
+              title="Storage, tuned."
+              caption="Postgres · Vector · Redis"
+              viz={(h) => <DatabasesViz hovered={h} />}
               delay={0.1}
             />
           </div>
 
           {/* Frontend */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <Card
-              accent="#f59e0b"
-              label="Frontend"
-              title="Interfaces with weight"
-              description="React / Next.js / Tailwind / Motion — Figma to production-grade UI, pixel and frame perfect."
-              badges={['React', 'Next.js', 'Tailwind', 'Motion', 'TS']}
+              index="04"
+              title="Interfaces with weight."
+              caption="React · Motion"
               viz={(h) => <FrontendLayersViz hovered={h} />}
               delay={0.15}
             />
           </div>
 
           {/* Backend */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <Card
-              accent="#22c55e"
-              label="Backend & APIs"
-              title="APIs that hold under load"
-              description="Node / Express, JWT & OAuth, rate-limiting and RESTful patterns engineered for scale."
-              badges={['Node', 'Express', 'JWT', 'OAuth', 'REST']}
+              index="05"
+              title="APIs that hold."
+              caption="Node · Auth · REST"
               viz={(h) => <BackendPulseViz hovered={h} />}
               delay={0.2}
             />
           </div>
 
-          {/* Tooling — full width */}
-          <div className="lg:col-span-12">
+          {/* Tooling */}
+          <div className="lg:col-span-6">
             <Card
-              accent="#94a3b8"
-              label="Tooling & Workflow"
-              title="Idea to ship, no friction"
-              description="A toolchain tuned for velocity — version control, AI-assisted authoring, workflow automation, deploy, and observability in one continuous rail."
-              badges={['Git', 'VS Code', 'Cursor', 'n8n', 'GitHub Actions', 'Postman']}
+              index="06"
+              title="Idea to ship."
+              caption="Toolchain · Workflow"
               viz={(h) => <ToolingRailViz hovered={h} />}
-              layout="rail"
-              vizClassName="h-[180px]"
+              vizHeight="h-[200px] lg:h-[240px]"
               delay={0.1}
             />
           </div>
